@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0",
+    "test": "exit 0",
     "prepare": "husky install"
   },
   "keywords": [],
@@ -17,6 +17,7 @@
     "eslint-config-prettier": "^8.9.0",
     "eslint-plugin-prettier": "^5.0.0",
     "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
     "nx": "^16.6.0",
     "prettier": "^3.0.0",
     "tslib": "^2.6.1",
