@@ -9,6 +9,7 @@ WORKDIR /app
 
 # Install dependencies based on the preferred package manager
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* pnpm-workspace.yaml* ./
+COPY apps/ssr/package.json ./apps/ssr/
 RUN \
   if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
   elif [ -f package-lock.json ]; then npm ci; \
@@ -22,7 +23,7 @@ FROM base AS builder
 WORKDIR /app
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
-# COPY --from=deps /app/apps/ssr/node_modules ./app/apps/ssr/node_modules
+COPY --from=deps /app/apps/ssr/node_modules ./app/apps/ssr/node_modules
 
 
 # Next.js collects completely anonymous telemetry data about general usage.
