@@ -50,6 +50,9 @@ jobs:
     environment: production
 
     steps:
+    - name: Check Docker Version
+      run: docker --version
+
     - name: Checkout
       uses: actions/checkout@v3
 
