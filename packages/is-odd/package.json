@@ -6,6 +6,6 @@
     "build": "tsc index.ts --outDir dist"
   },
   "dependencies": {
-    "is-even": "workspace:^"
+    "is-even": "*"
   }
 }

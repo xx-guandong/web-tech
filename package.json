@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "private": true,
   "scripts": {
+    "build:ssr": "nx build ssr",
+    "deploy:ssr": "docker build -f ./deploy/ssr/Dockerfile .",
     "test": "exit 0",
     "prepare": "husky install"
   },
@@ -22,5 +25,9 @@
     "prettier": "^3.0.0",
     "tslib": "^2.6.1",
     "typescript": "^5.1.6"
-  }
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ]
 }
