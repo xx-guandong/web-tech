@@ -1,3 +1,9 @@
+'use client'
+
+import { useLazyLoadQuery } from 'react-relay'
+import indexPage from '../queries/indexPage'
+
 export default function Page() {
-  return <h1>Hello, Next.js stand!</h1>
+  const data = useLazyLoadQuery(indexPage, {})
+  return <h1>Hello, Next.js stand! {JSON.stringify(data)}</h1>
 }

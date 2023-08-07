@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "relay-compiler --validate && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "relay": "relay-compiler"
   },
   "keywords": [],
   "author": "",
@@ -15,10 +16,15 @@
   "dependencies": {
     "next": "^13.4.12",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-relay": "15.0.0",
+    "relay-runtime": "15.0.0"
   },
   "devDependencies": {
     "@types/node": "20.4.6",
-    "@types/react": "18.2.18"
+    "@types/react": "18.2.18",
+    "@types/react-relay": "14.1.4",
+    "@types/relay-runtime": "14.1.12",
+    "relay-compiler": "15.0.0"
   }
 }
