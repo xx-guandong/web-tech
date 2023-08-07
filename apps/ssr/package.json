@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "relay-compiler && next dev",
-    "build": "yarn update-schema && yarn relay --validate && next build",
+    "build": "yarn update-schema && yarn relay && next build",
     "start": "next start",
     "lint": "next lint",
     "relay": "relay-compiler",
