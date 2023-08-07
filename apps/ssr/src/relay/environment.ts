@@ -12,7 +12,7 @@ import {
 } from 'relay-runtime'
 
 const HTTP_ENDPOINT = process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT
-const IS_SERVER = typeof window === typeof undefined
+export const IS_SERVER = typeof window === typeof undefined
 const CACHE_TTL = 5 * 1000 // 5 seconds, to resolve preloaded results
 
 export async function networkFetch(
