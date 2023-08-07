@@ -9,7 +9,7 @@ import {
 // const HTTP_ENDPOINT = 'http://localhost:5000/graphql'
 
 const fetchFn: FetchFunction = async (request, variables) => {
-  const resp = await fetch(process.env.NEXT_PUBLIC_RELAY_ENDPOINT, {
+  const resp = await fetch(process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT!, {
     method: 'POST',
     headers: {
       Accept:

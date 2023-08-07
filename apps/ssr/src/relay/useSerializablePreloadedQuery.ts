@@ -28,7 +28,6 @@ export default function useSerializablePreloadedQuery<
 
   return {
     environment,
-    // @ts-expect-error
     fetchKey: preloadQuery.params.id ?? preloadQuery.params.cacheID,
     fetchPolicy,
     isDisposed: false,
@@ -46,7 +45,6 @@ function writePreloadedQueryToCache<
   TQuery extends OperationType,
 >(preloadedQueryObject: SerializablePreloadedQuery<TRequest, TQuery>) {
   const cacheKey =
-    // @ts-expect-error
     preloadedQueryObject.params.id ?? preloadedQueryObject.params.cacheID
   responseCache?.set(
     cacheKey,

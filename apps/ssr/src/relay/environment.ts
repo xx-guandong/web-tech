@@ -63,7 +63,6 @@ function createNetwork() {
     cacheConfig: CacheConfig
   ) {
     const isQuery = params.operationKind === 'query'
-    // @ts-expect-error
     const cacheKey = params.id ?? params.cacheID
     const forceFetch = cacheConfig && cacheConfig.force
     if (responseCache != null && isQuery && !forceFetch) {
