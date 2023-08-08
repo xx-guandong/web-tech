@@ -2,11 +2,11 @@ import Image from './Image'
 
 export type Props = {
   poster: {
-    name: string
+    name: string | null
     profilePicture: {
-      url: string
+      url: string | null
     }
-  }
+  } | null
 }
 
 export default function PosterByline({ poster }: Props) {

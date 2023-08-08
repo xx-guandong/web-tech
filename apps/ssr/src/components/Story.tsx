@@ -6,21 +6,21 @@ import Image from './Image'
 
 type Props = {
   story: {
-    title: string
-    summary: string
+    title: string | null
+    summary: string | null
     thumbnail: {
-      url: string
-    }
-    poster: PosterBylineProps['poster']
+      url: string | null
+    } | null
+    poster: PosterBylineProps['poster'] | null
   }
 }
 
 export default function Story({ story }: Props): React.ReactElement {
   return (
     <Card>
-      <PosterByline poster={story.poster} />
+      <PosterByline poster={story?.poster} />
       <Heading>{story.title}</Heading>
-      <Image image={story.thumbnail} width={400} height={400} />
+      <Image image={story?.thumbnail} width={400} height={400} />
       <StorySummary summary={story.summary} />
     </Card>
   )

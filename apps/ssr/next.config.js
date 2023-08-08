@@ -5,9 +5,9 @@ export default {
   output: 'standalone',
   compiler: {
     relay: {
-      src: './',
+      src: './src',
       language: 'typescript',
-      artifactDirectory: './__generated__',
+      artifactDirectory: './src/__generated__',
     },
   },
 }

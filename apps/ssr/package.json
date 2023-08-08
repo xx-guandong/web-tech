@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "relay-compiler && next dev",
+    "dev": "yarn update-schema && relay-compiler && next dev",
     "build": "yarn update-schema && yarn relay && next build",
     "start": "next start",
     "lint": "next lint",

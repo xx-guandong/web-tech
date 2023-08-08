@@ -1,7 +1,7 @@
 export default function StorySummary({
   summary,
 }: {
-  summary: string
+  summary: string | null
 }): React.ReactElement {
   return (
     <div className="story__summary">

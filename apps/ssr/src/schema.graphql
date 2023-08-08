@@ -1,3 +1,127 @@
+type Story implements Node {
+  createdAt: String!
+  id: ID!
+  category: Category
+  title: String!
+  summary: String
+  updatedAt: String
+  attachments: [Image]
+  poster: Actor!
+  thumbnail: Image
+  likeCount: Int
+  doesViewerLike: Boolean
+  comments(first: Int, after: String): CommentsConnection
+}
+
+interface Node {
+  id: ID!
+}
+
+enum Category {
+  ALL
+  EDUCATION
+  NEWS
+  COOKING
+}
+
+type Image {
+  url(height: Int, width: Int): String!
+  altText: String
+}
+
+interface Actor {
+  id: ID!
+  name: String
+  profilePicture: Image
+  joined: String
+}
+
+type CommentsConnection {
+  edges: [CommentsConnectionEdge]
+  pageInfo: PageInfo
+}
+
+type CommentsConnectionEdge {
+  node: Comment
+  cursor: String
+}
+
+type Comment {
+  id: ID!
+  text: String
+}
+
+type PageInfo {
+  startCursor: String
+  endCursor: String
+  lastCursor: String
+  hasNextPage: Boolean
+  hasPreviousPage: Boolean
+}
+
+type Person implements Node & Actor {
+  id: ID!
+  name: String
+  email: String
+  profilePicture: Image
+  joined: String
+  location: Location
+}
+
+type Location {
+  id: ID!
+  name: String!
+}
+
+type Organization implements Node & Actor {
+  id: ID!
+  name: String
+  profilePicture: Image
+  joined: String
+  organizationKind: OrganizationKind
+}
+
+enum OrganizationKind {
+  COMMERCIAL
+  NONPROFIT
+  GOVERNMENT
+  JOURNALISTIC
+}
+
 type Query {
   user: String
+  viewer: Viewer
+  node(id: ID!): Node
+  topStory(category: Category): Story
+  topStories: [Story]
+}
+
+type Viewer {
+  actor: Actor
+  contacts(search: String): [Actor]
+  newsfeedStories(first: Int, after: String, category: Category): StoriesConnection
+}
+
+type StoriesConnection {
+  edges: [StoriesConnectionEdge]
+  pageInfo: PageInfo
+}
+
+type StoriesConnectionEdge {
+  node: Story
+  cursor: String
+}
+
+type Mutation {
+  likeStory(id: ID!, doesLike: Boolean!): StoryMutationResponse
+  postStoryComment(id: ID!, text: String!): StoryCommentMutationResponse
+}
+
+type StoryMutationResponse {
+  story: Story
+}
+
+type StoryCommentMutationResponse {
+  story: Story
+  commentEdge: CommentsConnectionEdge
 }
