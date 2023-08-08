@@ -1,10 +1,12 @@
 import { RelayEnvironmentProvider } from 'react-relay'
 import { initRelayEnvironment } from '../RelayEnvironment'
 import { RecordSource } from 'relay-runtime'
-import { useMemo, useEffect } from 'react'
+import { useMemo, useEffect, Suspense } from 'react'
 import { RelayPageProps } from '../relay-types'
 import type { AppContext, AppInitialProps, AppProps } from 'next/app'
 import App from 'next/app'
+import '../styles/style.css'
+import LoadingSpinner from '@/components/LoadingSpinner'
 
 export default function MyApp({
   Component,
@@ -21,9 +23,12 @@ export default function MyApp({
     // Notify any existing subscribers.
     store.notify()
   }, [environment, pageProps.initialRecords])
+
   return (
     <RelayEnvironmentProvider environment={environment}>
-      <Component {...pageProps} />
+      <Suspense fallback={<LoadingSpinner />}>
+        <Component {...pageProps} />
+      </Suspense>
     </RelayEnvironmentProvider>
   )
 }
