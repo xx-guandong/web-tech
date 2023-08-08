@@ -3,10 +3,10 @@ import { initRelayEnvironment } from '../RelayEnvironment'
 import { RecordSource } from 'relay-runtime'
 import { useMemo, useEffect } from 'react'
 import { RelayPageProps } from '../relay-types'
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
+import type { AppContext, AppInitialProps, AppProps } from 'next/app'
+import App from 'next/app'
 
-export default function App({
+export default function MyApp({
   Component,
   pageProps,
 }: AppProps<RelayPageProps>) {
@@ -26,4 +26,11 @@ export default function App({
       <Component {...pageProps} />
     </RelayEnvironmentProvider>
   )
+}
+
+MyApp.getInitialProps = async (
+  context: AppContext
+): Promise<AppInitialProps> => {
+  const ctx = await App.getInitialProps(context)
+  return { ...ctx }
 }
