@@ -1,32 +1,14 @@
-type Story implements Node {
-  createdAt: String!
+type Person implements Node & Actor {
   id: ID!
-  category: Category
-  title: String!
-  summary: String
-  updatedAt: String
-  attachments: [Image]
-  poster: Actor!
-  thumbnail: Image
-  likeCount: Int
-  doesViewerLike: Boolean
-  comments(first: Int, after: String): CommentsConnection
+  name: String
+  email: String
+  profilePicture: Image
+  joined: String
+  location: Location
 }
 
 interface Node {
   id: ID!
-}
-
-enum Category {
-  ALL
-  EDUCATION
-  NEWS
-  COOKING
-}
-
-type Image {
-  url(height: Int, width: Int): String!
-  altText: String
 }
 
 interface Actor {
@@ -36,36 +18,9 @@ interface Actor {
   joined: String
 }
 
-type CommentsConnection {
-  edges: [CommentsConnectionEdge]
-  pageInfo: PageInfo
-}
-
-type CommentsConnectionEdge {
-  node: Comment
-  cursor: String
-}
-
-type Comment {
-  id: ID!
-  text: String
-}
-
-type PageInfo {
-  startCursor: String
-  endCursor: String
-  lastCursor: String
-  hasNextPage: Boolean
-  hasPreviousPage: Boolean
-}
-
-type Person implements Node & Actor {
-  id: ID!
-  name: String
-  email: String
-  profilePicture: Image
-  joined: String
-  location: Location
+type Image {
+  url(height: Int, width: Int): String!
+  altText: String
 }
 
 type Location {
@@ -110,6 +65,51 @@ type StoriesConnection {
 type StoriesConnectionEdge {
   node: Story
   cursor: String
+}
+
+type Story implements Node {
+  createdAt: String!
+  id: ID!
+  category: Category
+  title: String!
+  summary: String
+  updatedAt: String
+  attachments: [Image]
+  poster: Actor!
+  thumbnail: Image
+  likeCount: Int
+  doesViewerLike: Boolean
+  comments(first: Int, after: String): CommentsConnection
+}
+
+enum Category {
+  ALL
+  EDUCATION
+  NEWS
+  COOKING
+}
+
+type CommentsConnection {
+  edges: [CommentsConnectionEdge]
+  pageInfo: PageInfo
+}
+
+type CommentsConnectionEdge {
+  node: Comment
+  cursor: String
+}
+
+type Comment {
+  id: ID!
+  text: String
+}
+
+type PageInfo {
+  startCursor: String
+  endCursor: String
+  lastCursor: String
+  hasNextPage: Boolean
+  hasPreviousPage: Boolean
 }
 
 type Mutation {

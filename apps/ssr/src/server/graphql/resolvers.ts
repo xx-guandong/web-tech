@@ -119,3 +119,14 @@ export function resolvePostStoryCommentMutation(_, { id, text }) {
     },
   }
 }
+
+export const rootValue = {
+  viewer: () => {
+    return {
+      actor: nodes.find((node) => node.id === 'the-viewer'),
+    }
+  },
+  node: (args) => {
+    return nodeResolver(args)
+  },
+}

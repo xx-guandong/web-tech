@@ -295,5 +295,5 @@ const MutationType = new GraphQLObjectType({
 export const schema = new GraphQLSchema({
   query: Query,
   mutation: MutationType,
-  types: [StoryType, PersonType, OrganizationType],
+  types: [PersonType, OrganizationType],
 })
