@@ -1,0 +1,22 @@
+org: andong
+app: serverless-http-api-typescript
+service: serverless-http-api-typescript
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-west-2
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - httpApi:
+          path: /
+          method: get
+
+plugins:
+  - serverless-offline
+  - serverless-plugin-monorepo
+  - serverless-plugin-typescript

@@ -7,6 +7,7 @@
   "scripts": {
     "build:ssr": "nx build ssr",
     "deploy:ssr": "docker build -f ./deploy/ssr/Dockerfile .",
+    "deploy:scraping": "nx deploy scraping",
     "test": "exit 0",
     "prepare": "husky install"
   },
@@ -14,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/aws-lambda": "^8.10.119",
     "@typescript-eslint/eslint-plugin": "^6.2.0",
     "@typescript-eslint/parser": "^6.2.0",
     "dotenv-cli": "^7.2.1",
@@ -24,6 +26,10 @@
     "lint-staged": "^13.2.3",
     "nx": "^16.6.0",
     "prettier": "^3.0.0",
+    "serverless": "^3.34.0",
+    "serverless-offline": "^12.0.4",
+    "serverless-plugin-monorepo": "^0.11.0",
+    "serverless-plugin-typescript": "^2.1.5",
     "ts-node": "^10.9.1",
     "tslib": "^2.6.1",
     "typescript": "^5.1.6"
